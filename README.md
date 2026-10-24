@@ -1,3 +1,4 @@
+'''
    ******   ******** **    ** ****     **   ******
   **////** **////// //**  ** /**/**   /**  **////**
  **    // /**        //****  /**//**  /** **    //
@@ -6,6 +7,7 @@
 //**    **       /**   /**   /**   //****//**    **
  //******  ********    /**   /**    //*** //******
   //////  ////////     //    //      ///   //////
+'''
 
 this is an alternative to syncthing and in general a personal project to help me learn c++ and just see how far i can get
 
