@@ -13,6 +13,7 @@ the goal is a simple non-invasive P2P and low recource sync program
 fuck version control and backups I simply want file 1 to be identical to file 2... and room for expansion as it goes on
 
 # To-Do
+- [ ] merge functions to read timestamps and filesize into one multi-use function
 - [ ] add file tracking, most likely using git but i want to explore options
 - [ ] cross-device support
 - [ ] add lightweight deamon

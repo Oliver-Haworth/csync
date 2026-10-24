@@ -47,7 +47,7 @@ string compareTimestamp(string filepath1, string filepath2) {
         file2.close();
     }
 
-    if (timeStr1 != timeStr2) {
+    if (timeStr1 == timeStr2) {
         return "identical";
     } else {
         return "different";
