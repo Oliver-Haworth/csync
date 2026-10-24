@@ -16,18 +16,18 @@ void askiiLogo() {
     MyReadFile.close();
 }
 
-void writeTimestamp(string filename) {
+void writeTimestamp(string filepath) {
     time_t timestamp = time(&timestamp);
 
-    ofstream MyFile(filename);
+    ofstream MyFile(filepath);
     MyFile << timestamp;
     MyFile.close();
 }
 
-void readTimestamp(string filename) {
+void readTimestamp(string filepath) {
     string myText;
 
-    ifstream MyReadFile(filename);
+    ifstream MyReadFile(filepath);
     while (getline (MyReadFile, myText)) {
         cout << myText << "\n";
     }
@@ -54,15 +54,31 @@ string compareTimestamp(string filepath1, string filepath2) {
     }
 }
 
+void readSavedFilepaths(string filename, string filepaths[2]) {
+    string myText;
+    int i = 0;
+
+    ifstream MyReadFile(filename);
+    while (getline(MyReadFile, myText) && i < 2) {
+        filepaths[i] = myText;
+        i++;
+    }
+    MyReadFile.close();
+}
+
 int main() {
 
     askiiLogo();
 
-    writeTimestamp("timestamp1.txt");
-    writeTimestamp("timestamp2.txt");
+    string filepaths[2];
+    
+    readSavedFilepaths("filepaths.txt", filepaths);
 
-    readTimestamp("timestamp1.txt");
-    readTimestamp("timestamp2.txt");
+    writeTimestamp(filepaths[0]);
+    writeTimestamp(filepaths[1]);
+
+    readTimestamp(filepaths[0]);
+    readTimestamp(filepaths[1]);
 
     cout << compareTimestamp("timestamp1.txt", "timestamp2");
     
