@@ -1,3 +1,7 @@
+''
+AI generated file, i just wanted to get straight to development
+Prompt: c++ on nixos, generate a flake.nix with basic c++ development tools
+''
 {
   description = "C++ Development Environment";
 
