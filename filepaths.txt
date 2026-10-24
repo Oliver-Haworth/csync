@@ -1,2 +1,2 @@
-./dir1/.csync/timestamp1.txt
-./dir2/.csync/timestamp2.txt
+./dir1/
+./dir2/

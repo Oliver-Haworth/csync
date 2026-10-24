@@ -2,8 +2,10 @@
 #include <string>
 #include <fstream>
 #include <ctime>
+#include <filesystem>
 
 using namespace std;
+namespace fs = filesystem;
 
 void askiiLogo() {
     // logo generated using https://asciigenerators.com/#app
@@ -48,9 +50,9 @@ string compareTimestamp(string filepath1, string filepath2) {
     }
 
     if (timeStr1 == timeStr2) {
-        return "identical";
+        return "identical timestamps\n";
     } else {
-        return "different";
+        return "different timestamps\n";
     }
 }
 
@@ -66,21 +68,45 @@ void readSavedFilepaths(string filename, string filepaths[2]) {
     MyReadFile.close();
 }
 
-int main() {
+// AI gen function, i have no idea how to measure directory sizes
+uintmax_t getDirSize(const string &dirPath) {
+    uintmax_t totalSize = 0;
+    try {
+        for (const auto &entry : fs::recursive_directory_iterator(dirPath, fs::directory_options::skip_permission_denied)) {
+            if (entry.is_regular_file()) {
+                totalSize += entry.file_size();
+            }
+        }
+    } catch (const fs::filesystem_error &e) {
+        cerr << "Error measuring " << dirPath << ": " << e.what() << endl;
+    }
+    return totalSize;
+}
 
+void readDirSize(const string &dirPath) {
+    uintmax_t size = getDirSize(dirPath);
+    cout << "Size of " << dirPath << ": " << size << " bytes" << endl;
+}
+
+
+int main() {
     askiiLogo();
 
     string filepaths[2];
     
     readSavedFilepaths("filepaths.txt", filepaths);
 
-    writeTimestamp(filepaths[0]);
-    writeTimestamp(filepaths[1]);
+    writeTimestamp(filepaths[0] + "/.csync/timestamp.txt");
+    writeTimestamp(filepaths[1] + "/.csync/timestamp.txt");
 
+    readTimestamp(filepaths[0] + "/.csync/timestamp.txt");
+    readTimestamp(filepaths[1] + "/.csync/timestamp.txt");
+    readDirSize(filepaths[0]);
+    readDirSize(filepaths[1]);
     readTimestamp(filepaths[0]);
     readTimestamp(filepaths[1]);
 
-    cout << compareTimestamp("timestamp1.txt", "timestamp2");
+    cout << compareTimestamp(filepaths[0] + "/.csync/timestamp.txt",filepaths[1] + "timestamp.txt");
     
     return 0;
 }
