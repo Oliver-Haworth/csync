@@ -23,7 +23,7 @@ int main() {
 
     cout << "dir1 size: " << readDirSize(filepaths[0]) << "\n";
     cout << "dir2 size: " << readDirSize(filepaths[1]) << "\n";
-    // cout << compareDirSize(filepaths[0], filepaths[1]);
+    cout << compareDirSize(filepaths[0], filepaths[1]);
     
     return 0;
 }

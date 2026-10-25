@@ -31,6 +31,8 @@ to avoid scope creep this is a minimal program to begin with
 - compare the hash of the downloaded files and source, if they are diffrent there was an error and try again, otherwise:
 - update both timestamps to match, wipe both changed.txt, wipe the saved hashes
 
+i may consider a full hash system however i am cautious since this is supposed to be a lightweight program
+
 
 # To-Do
 - [ ] merge functions to read timestamps and filesize into one multi-use function

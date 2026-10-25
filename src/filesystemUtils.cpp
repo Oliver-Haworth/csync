@@ -47,3 +47,14 @@ uintmax_t readDirSize(const string &dirPath) {
 
 //     return dirSize1
 // }
+
+string compareDirSize(string dirPath1, string dirPath2) {
+    uintmax_t dir1Size = readDirSize(dirPath1);
+    uintmax_t dir2Size = readDirSize(dirPath2);
+
+    if (dir1Size == dir2Size) {
+        return "identical sizes\n";
+    } else {
+        return "different sizes\n";
+    }
+}
