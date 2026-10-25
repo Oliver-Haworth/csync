@@ -15,6 +15,14 @@ the goal is a simple non-invasive P2P and low recource sync program
 fuck version control and backups at least for now I simply want file 1 to be identical to file 2... and room for expansion as it gets larger
 to avoid scope creep this is a minimal program to begin with
 
+everything is a bit wishywashy and subject to change at the moment
+
+this program uses a hidden folder inside the tracked dir, i will keep this clean and minimal but this is done intentionally so a centeral controller is not needed you simply run csync on any device with .csync and it knows what other devices to sync to
+
+or i'm just being insane, i just want it to be atomic and P2P
+
+I will be using the XXH3_128B hashing algorithm, it does not need to be cryptographic it simply needs to show that file 1 == file 2
+
 # planned algorithm
 
 ## on change

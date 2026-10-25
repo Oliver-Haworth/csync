@@ -39,15 +39,6 @@ uintmax_t readDirSize(const string &dirPath) {
     return getDirSize(dirPath);
 }
 
-// string compareDirSize(string dirpath1, string dirpath2) {
-//     int dirsize1 = readDirSize[dirpath1];
-//     int dirsize2 = readDirSize[dirpath2];
-
-//     cout << dirSize1 << "&&" << dirSize2;
-
-//     return dirSize1
-// }
-
 string compareDirSize(string dirPath1, string dirPath2) {
     uintmax_t dir1Size = readDirSize(dirPath1);
     uintmax_t dir2Size = readDirSize(dirPath2);
